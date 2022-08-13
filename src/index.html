@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>monitor-SDK</title>
+</head>
+<body>
+
+<div id="container">
+    <div class="content">
+        <input type="button" value="JSError" onclick="jsError()">
+        <input type="button" value="PromiseError" onclick="PromiseError()">
+        <input type="button" value="SuccessAjax" onclick="SuccessAjax()">
+        <input type="button" value="ErrorAjax" onclick="ErrorAjax()">
+
+    </div>
+    <script>
+
+        const jsError = () => {
+            window.someVar.error = 'JSError'
+        }
+        const PromiseError = () => {
+            new Promise((resolve, reject)  =>{
+                window.someVar.error = 'error'
+                // reject('error')
+            }).then(res => {
+                console.log('res', res);
+            })
+        }
+        const SuccessAjax = () => {
+            let xhr = new XMLHttpRequest()
+            xhr.open('GET', '/success',true)
+            xhr.responseType = 'json'
+            xhr.onload = (res) => {
+                console.log(res);
+            }
+            xhr.send()
+        }
+        const ErrorAjax = () => {
+            let xhr = new XMLHttpRequest()
+            xhr.open('POST', '/error',true)
+            xhr.responseType = 'json'
+            xhr.onload = (res) => {
+                console.log(res);
+            }
+            xhr.onerror = (err) => {
+                console.log(err);
+            }
+            xhr.send()
+        }
+    </script>
+    <script>
+      //   let link = document.createElement('link')
+      //   link.type = 'text/css'
+      //   link.rel = 'stylesheet'
+      //   link.href = 'https://baidu.com/15.css'
+      //   document.head.append(link)
+      //   const img = document.createElement('img');
+      //  img.src = 'abc.png';
+      // document.body.appendChild(img);
+    </script>
+    <script>
+        setTimeout(() => {
+            let content = document.getElementsByClassName('content')[0]
+            let h1 = document.createElement('h1')
+            h1.innerHTML = '有意义'
+            h1.setAttribute('elementtiming','meaningful')
+            content.appendChild(h1)
+        }, 500)
+    </script>
+</div>
+</body>
+</html>
