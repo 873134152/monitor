@@ -14,8 +14,7 @@ export function timing() {
     // 增加一个性能条目的观察者
     new PerformanceObserver((entryList, observer) => {
         const perfEntries = entryList.getEntries();
-        const lastEntry = perfEntries[perfEntries.length - 1];
-        LCP = lastEntry;
+        LCP = perfEntries[perfEntries.length - 1];
         observer.disconnect(); // 不再观察了
     }).observe({ entryTypes: ["largest-contentful-paint"] }); // 观察页面中最大的元素
     // 增加交互处理时间
