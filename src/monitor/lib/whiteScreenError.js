@@ -46,14 +46,15 @@ export function whiteScreen() {
             isWrapper(yElements[0])
             isWrapper(acElements[0])
         }
-        if (emptyPoints >= 0) {
+        if (emptyPoints >= 20) {
             let centerElements = document.elementsFromPoint(
                 window.innerWidth / 2,
                 window.innerHeight / 2
             );
             tracker.send({
                 kind: "stability",
-                type: "whiteScreenError",
+                type: "error",
+                errorType: "whiteScreenError",
                 emptyPoints: "" + emptyPoints,
                 screen: window.screen.width + "x" + window.screen.height,
                 viewPoint: window.innerWidth + "x" + window.innerHeight,

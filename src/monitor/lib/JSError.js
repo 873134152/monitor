@@ -15,7 +15,7 @@ export function injectJSError() {
                 message: 'Could not found resource',
                 filename: event.target.src || event.target.href,
                 tagName: event.target.tagName,
-                position: `rows:${event.lineno} columns:${event.colno}`,
+                timeStamp: event.timeStamp,
                 selector: getSelector(event.target)
             }
         } else {

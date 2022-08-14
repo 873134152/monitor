@@ -27,6 +27,7 @@ export function injectXHR() {
                             kind: 'stability',
                             type: 'xhrError',
                             eventType: event.type,
+                            pathname: this.logData.url,
                             status: `${status}-${statusText}`,
                             duration,
                             response: this.response ? JSON.stringify(this.response) : '',
