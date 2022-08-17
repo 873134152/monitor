@@ -10,7 +10,6 @@ export function injectXHR() {
                 url,
                 async
             }
-
         }
         return oldOpen.apply(this, arguments)
     }
