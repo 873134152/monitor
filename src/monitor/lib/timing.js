@@ -42,6 +42,7 @@ export function timing() {
     }).observe({ type: "first-input", buffered: true }); // 第一次交互
 
     onLoad(function () {
+        console.log(returnCitySN["cip"])
         setTimeout(() => {
             const [entry] = performance.getEntriesByType("navigation"); //获取Nagation实例
             const timingJson = entry.toJSON();//转JSON 读取部分不可读属性

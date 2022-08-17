@@ -4,7 +4,7 @@ import tracker from "../utils/tracker";
 export function injectJSError() {
     //监听全局捕获错误
     window.addEventListener('error', (event) => {
-        console.log(event)
+        // console.log(event)
         let lastEvent = getLastEvent() //最后一个交互事件
         let log
         if (event.target && (event.target.src || event.target.href)) {
