@@ -9,3 +9,6 @@ injectXHR()
 whiteScreen()
 timing()
 userAction()
+window.setOption = function (option = {}) {
+    window.postUrl = option.url
+}

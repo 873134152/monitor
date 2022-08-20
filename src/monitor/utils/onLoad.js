@@ -5,4 +5,5 @@ export default function (callback) {
     } else {
         window.addEventListener('load',callback)
     }
+
 }

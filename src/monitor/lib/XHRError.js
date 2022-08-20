@@ -5,7 +5,14 @@ export function injectXHR() {
     let oldOpen = XMLHttpRequest.prototype.open
     XMLHttpRequest.prototype.open = function (method, url, async) {
         // if (!url.match(/\/user\/post/)) {
-        if (!url.match(/\/api\/post_err/)) {
+        // if (!url.match(/\/api\/post_err/)) {
+        if (window.postUrl && window.postUrl !== url) {
+            this.logData = {
+                method,
+                url,
+                async
+            }
+        } else if (!url.match(/\/api\/post_err/)) {
             this.logData = {
                 method,
                 url,

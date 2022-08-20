@@ -1,5 +1,5 @@
 import userAgent from "user-agent";
-
+import {postUrl} from "../index";
 const getUserLocalData = () => {
     // console.log(location);
     return {
@@ -9,8 +9,10 @@ const getUserLocalData = () => {
         userAgent: userAgent.parse(navigator.userAgent)
     }
 }
+
 class SendTracker {
     constructor() {
+        this.url = window.postUrl ? window.postUrl : 'http://106.55.171.246/api/post_err'
         this.url = 'http://106.55.171.246/api/post_err'; //后台接口
         // this.url = 'http://prevention.purplesun.top/user/post'
     }
