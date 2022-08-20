@@ -26,6 +26,7 @@ export function injectXHR() {
         if (this.logData) {
             let startTime = Date.now()
             const handler = (type) => {
+
                 return (event) => {
                     let duration = Date.now() - startTime
                     let status = this.status
