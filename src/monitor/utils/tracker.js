@@ -12,9 +12,10 @@ const getUserLocalData = () => {
 class SendTracker {
     constructor() {
         this.url = 'http://106.55.171.246/api/post_err'; //后台接口
-        this.xhr = new XMLHttpRequest()
+        // this.url = 'http://prevention.purplesun.top/user/post'
     }
     send(data = {}) {
+        this.xhr = new XMLHttpRequest()
         let userLocalData = getUserLocalData()
         // console.log(userLocalData);
         let log = {...userLocalData, ...data}

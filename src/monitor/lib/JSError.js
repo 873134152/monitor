@@ -24,6 +24,7 @@ export function injectJSError() {
                 type: 'error',
                 errorType: 'jsError',
                 message: event.message,
+                filename: event.filename,
                 position: `rows:${event.lineno} columns:${event.colno}`,
                 stack: getLines(event.error.stack),
                 selector: lastEvent ? getSelector(lastEvent.path) : ''

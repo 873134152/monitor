@@ -42,7 +42,7 @@ export function timing() {
     }).observe({ type: "first-input", buffered: true }); // 第一次交互
 
     onLoad(function () {
-        console.log(returnCitySN["cip"])
+
         setTimeout(() => {
             const [entry] = performance.getEntriesByType("navigation"); //获取Nagation实例
             const timingJson = entry.toJSON();//转JSON 读取部分不可读属性
@@ -82,15 +82,6 @@ export function timing() {
                 firstMeaningfulPaint: FMP ? FMP.startTime.toFixed(3) : 0, // FirstMeaningfulPaint 第一次有意义内容绘制
                 largestContentfulPaint: LCP ? (LCP.renderTime || LCP.loadTime).toFixed(3) : 0 // largestContentfulPaint 最大元素绘制
             });
-            // tracker.send({
-            //     kind: "experience",
-            //     type: "paint",
-            //     firstPaint: FP ? FP.startTime : 0,
-            //     firstContentPaint: FCP ? FCP.startTime : 0,
-            //     firstMeaningfulPaint: FMP ? FMP.startTime : 0,
-            //     largestContentfulPaint: LCP ? (LCP.renderTime || LCP.loadTime) : 0
-            // });
-
         }, 3000);
 
     });
