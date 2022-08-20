@@ -46,7 +46,6 @@ export function injectXHR() {
                     })
                 }
 
-
             }
             this.addEventListener('load', handler('load'), false)
             this.addEventListener('error', handler('error'), false)
