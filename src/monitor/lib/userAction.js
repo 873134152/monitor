@@ -4,26 +4,26 @@ import onLoad from "../utils/onLoad";
 export function userAction() {
     getIP()
     onLoad(() => {
-        // console.log(returnCitySN["cip"])
+        console.log(returnCitySN["cip"])
         tracker.send({
             kind: "userAction",
             type: "pv",
-            IP:localStorage.getItem('IP'),
+            IP:returnCitySN["cip"],
             startTime: Date.now(),
             pageURL: window.location.href,
             referrer: document.referrer,
         });
-        if (localStorage.getItem('IP') ||
+        if (!localStorage.getItem('IP') ||
             Date.now() - Number(localStorage.getItem('IP')) >= 86400000) {
+            localStorage.setItem('IP', Date.now().toString())
             tracker.send({
                 kind: "userAction",
                 type: "uv",
-                IP:localStorage.getItem('IP'),
+                IP:returnCitySN["cip"],
                 startTime: Date.now(),
                 pageURL: window.location.href,
                 referrer: document.referrer,
             });
-            localStorage.setItem('IP', Date.now().toString())
         }
 
     })
@@ -31,7 +31,6 @@ export function userAction() {
     window.addEventListener(
         "beforeunload",
         () => {
-            debugger
             let duration = (Date.now() - startTime).toFixed(3);
             tracker.send({
                 kind: "userAction",
@@ -41,7 +40,6 @@ export function userAction() {
                 duration,
                 pageURL: window.location.href,
             })
-            debugger;
         },
         false
     );

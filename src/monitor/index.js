@@ -9,6 +9,7 @@ injectXHR()
 whiteScreen()
 timing()
 userAction()
+// localStorage.removeItem('IP')
 window.setOption = function (option = {}) {
     window.postUrl = option.url
 }
