@@ -23,7 +23,6 @@ export function userAction() {
                 startTime: Date.now(),
                 pageURL: window.location.href,
                 referrer: document.referrer,
-
             });
         }
 
