@@ -13,7 +13,7 @@ const getUserLocalData = () => {
 class SendTracker {
     constructor() {
         this.url = window.postUrl ? window.postUrl : 'http://106.55.171.246/api/post_err'
-        this.url = 'http://106.55.171.246/api/post_err'; //后台接口
+        // this.url = 'http://106.55.171.246/api/post_err'; //后台接口
         // this.url = 'http://prevention.purplesun.top/user/post'
     }
     send(data = {}) {

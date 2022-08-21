@@ -8,16 +8,18 @@ export function userAction() {
         tracker.send({
             kind: "userAction",
             type: "pv",
-            startTime: performance.now(),
+            IP:localStorage.getItem('IP'),
+            startTime: Date.now(),
             pageURL: window.location.href,
             referrer: document.referrer,
         });
-        if (!localStorage.getItem('IP') ||
+        if (localStorage.getItem('IP') ||
             Date.now() - Number(localStorage.getItem('IP')) >= 86400000) {
             tracker.send({
                 kind: "userAction",
                 type: "uv",
-                startTime: performance.now(),
+                IP:localStorage.getItem('IP'),
+                startTime: Date.now(),
                 pageURL: window.location.href,
                 referrer: document.referrer,
             });
@@ -29,13 +31,17 @@ export function userAction() {
     window.addEventListener(
         "beforeunload",
         () => {
-            let duration = Date.now() - startTime;
+            debugger
+            let duration = (Date.now() - startTime).toFixed(3);
             tracker.send({
                 kind: "userAction",
                 type: "duration",
+                startTime,
+                IP:localStorage.getItem('IP'),
                 duration,
                 pageURL: window.location.href,
-            });
+            })
+            debugger;
         },
         false
     );
